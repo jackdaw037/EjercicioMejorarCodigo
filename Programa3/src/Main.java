@@ -10,7 +10,7 @@ public class Main {
         int c = 0;
         boolean x = true;
         while (x) {
-            System.out.println("1 2 3 4 5");
+            System.out.println("Selecciones una opcion 1 2 3 4 5");
             int n = s.nextInt();
             if (n == 1) {
                 if (g > 10) {
