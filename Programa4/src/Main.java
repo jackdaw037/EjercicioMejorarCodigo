@@ -12,7 +12,7 @@ public class Main {
         int experiencia = 0;     // Experiencia acumulada
         boolean jugando = true;  // Control del bucle principal
 
-        System.out.println("=== Mini Juego de Batalla ===");
+        System.out.println("=== Mini Juego  ===");
         System.out.println("Comienzas con " + vida + " de vida, daño base " + daño + ".");
         System.out.println("Escribe un número del 1 al 4 para jugar, o 0 para salir.\n");
 
