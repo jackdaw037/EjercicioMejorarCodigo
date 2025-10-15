@@ -2,53 +2,89 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        int g = 50;
-        int h = 0;
-        int a = 0;
-        int b = 0;
-        int c = 0;
-        boolean x = true;
-        while (x) {
-            System.out.println("Selecciones una opcion 1 2 3 4 5");
-            int n = s.nextInt();
-            if (n == 1) {
-                if (g > 10) {
-                    g = g - 10;
-                    h = h + 5;
-                    a = a + 1;
-                } else {
-                    System.out.println("x");
-                }
-            } else if (n == 2) {
-                if (g > 7) {
-                    g = g - 7;
-                    h = h + 3;
-                    b = b + 1;
-                } else {
-                    System.out.println("x");
-                }
-            } else if (n == 3) {
-                if (g > 20) {
-                    g = g - 20;
-                    h = h + 10;
-                    c = c + 1;
-                } else {
-                    System.out.println("x");
-                }
-            } else if (n == 4) {
-                System.out.println(g);
-                System.out.println(h);
-                System.out.println(a);
-                System.out.println(b);
-                System.out.println(c);
-            } else if (n == 5) {
-                x = false;
+        Scanner scanner = new Scanner(System.in);
+
+        int dinero = 50;          // Dinero disponible
+        int ganancias = 0;        // Ganancias acumuladas
+        int productoA = 0;        // Contador de productos tipo A
+        int productoB = 0;        // Contador de productos tipo B
+        int productoC = 0;        // Contador de productos tipo C
+        boolean ejecutando = true;
+
+        System.out.println("=== Simulador de Compras ===");
+        System.out.println("Tienes $" + dinero + " disponibles.\n");
+
+        while (ejecutando) {
+            System.out.println("\nSeleccione una opción:");
+            System.out.println("1. Comprar producto A (cuesta $10, gana $5)");
+            System.out.println("2. Comprar producto B (cuesta $7, gana $3)");
+            System.out.println("3. Comprar producto C (cuesta $20, gana $10)");
+            System.out.println("4. Ver estado actual");
+            System.out.println("5. Salir");
+            System.out.print("Opción: ");
+
+            int opcion = scanner.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    if (dinero >= 10) {
+                        dinero -= 10;
+                        ganancias += 5;
+                        productoA++;
+                        System.out.println("Compraste producto A.");
+                    } else {
+                        System.out.println("No tienes suficiente dinero.");
+                    }
+                    break;
+
+                case 2:
+                    if (dinero >= 7) {
+                        dinero -= 7;
+                        ganancias += 3;
+                        productoB++;
+                        System.out.println("Compraste producto B.");
+                    } else {
+                        System.out.println("No tienes suficiente dinero.");
+                    }
+                    break;
+
+                case 3:
+                    if (dinero >= 20) {
+                        dinero -= 20;
+                        ganancias += 10;
+                        productoC++;
+                        System.out.println("Compraste producto C.");
+                    } else {
+                        System.out.println("No tienes suficiente dinero.");
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("\n--- Estado Actual ---");
+                    System.out.println("Dinero restante: $" + dinero);
+                    System.out.println("Ganancias acumuladas: $" + ganancias);
+                    System.out.println("Productos comprados:");
+                    System.out.println("A: " + productoA);
+                    System.out.println("B: " + productoB);
+                    System.out.println("C: " + productoC);
+                    break;
+
+                case 5:
+                    System.out.println("Te quedaste sin dinero ");
+                    ejecutando = false;
+                    break;
+
+                default:
+                    System.out.println("Opción no válida. Intente nuevamente.");
             }
-            if (g < 0) {
-                System.out.println("end");
-                x = false;
+
+            // Si el dinero se acaba, termina el programa
+            if (dinero <= 0 && ejecutando) {
+                System.out.println("Te has quedado sin dinero. Fin del programa.");
+                ejecutando = false;
             }
         }
+
+        scanner.close();
     }
 }
